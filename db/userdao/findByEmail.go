@@ -14,8 +14,8 @@ func FindBy(email string) (model.User, bool, string) {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 
-	db := db.Connection.Database("twittor")
-	collection := db.Collection("user")
+	database := db.Connection.Database("twittor")
+	collection := database.Collection("user")
 
 	condition := bson.M{"email": email}
 

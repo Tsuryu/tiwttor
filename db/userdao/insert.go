@@ -16,8 +16,8 @@ func Insert(user model.User) (string, bool, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 
-	db := db.Connection.Database("twittor")
-	collection := db.Collection("user")
+	database := db.Connection.Database("twittor")
+	collection := database.Collection("user")
 
 	user.Password, _ = util.Encrypt(user.Password)
 
