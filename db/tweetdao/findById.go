@@ -25,12 +25,13 @@ func FindByID(ID string, page int) ([]*model.Tweet, bool) {
 		"userId": ID,
 	}
 
-	options := options.Find()
+	// options := options.Find()
+	var options options.FindOptions
 	options.SetLimit(20)
 	options.SetSort(bson.D{{Key: "date", Value: -1}}) // descendente
 	options.SetSkip((int64(page) - 1) * 20)
 
-	cursor, err := collection.Find(ctx, filter, options)
+	cursor, err := collection.Find(ctx, filter, &options)
 	if err != nil {
 		log.Fatal(err.Error())
 		return result, false

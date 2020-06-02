@@ -32,6 +32,10 @@ func UpdateByID(user model.User, ID string) (bool, error) {
 		register["avatar"] = user.Avatar
 	}
 
+	if len(user.Banner) > 0 {
+		register["banner"] = user.Banner
+	}
+
 	if len(user.Biography) > 0 {
 		register["biography"] = user.Biography
 	}
