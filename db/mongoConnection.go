@@ -3,6 +3,7 @@ package db
 import (
 	"context"
 	"log"
+	"os"
 	"time"
 
 	"go.mongodb.org/mongo-driver/mongo"
@@ -12,7 +13,7 @@ import (
 // Connection : client to work with mongodb
 var Connection = ConnectDB()
 
-var clientOptions = options.Client().ApplyURI("mongodb://localhost:27017")
+var clientOptions = options.Client().ApplyURI(os.Getenv("MONGO_URL"))
 
 // ConnectDB : to connect to mongo
 func ConnectDB() *mongo.Client {
